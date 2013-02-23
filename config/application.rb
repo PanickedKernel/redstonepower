@@ -30,7 +30,6 @@ module Redstonepower
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
     config.autoload_paths += %W(#{config.root}/lib)
-    config.autoload_paths += %W(#{config.root}/lib/validators)
 
 
     # Only load the plugins named here, in the order given (default is alphabetical).
@@ -73,5 +72,8 @@ module Redstonepower
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    # Precompile *all* assets, except those that start with underscore
+    config.assets.precompile << /(^[^_\/]|\/[^_])[^\/]*$/
   end
 end
