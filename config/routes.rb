@@ -1,4 +1,6 @@
 Redstonepower::Application.routes.draw do
+  get "/stats" => "stats#show"
+
   authenticated :user do
     root :to => 'home#index'
   end
