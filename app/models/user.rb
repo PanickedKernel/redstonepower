@@ -4,11 +4,11 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable
+         :recoverable, :rememberable, :trackable, authentication_keys: [:username]
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :as => :admin
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :minecraft_username
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :username
  
   validate :minecraft_premium
   validates_format_of :email, :with  => Devise.email_regexp, :allow_blank => true, :if => :email_changed?
@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
   def minecraft_premium
     require 'open-uri'
     url = "https://minecraft.net/haspaid.jsp?user="
-    minecraft_validation_url = url + minecraft_username
+    minecraft_validation_url = url + username
     is_username_premium = open(minecraft_validation_url).read
-    errors.add(:minecraft_username, minecraft_username + " is not a premium minecraft account") unless is_username_premium == "true"
+    errors.add(:username, username + " is not a premium minecraft account") unless is_username_premium == "true"
   end
 end

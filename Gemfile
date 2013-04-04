@@ -7,7 +7,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 gem 'jquery-rails'
-gem "thin", ">= 1.5.0"
+gem "thin", ">= 1.5.0", :group => :development
 gem "sqlite3"
 gem "mysql2"
 gem "haml-rails", ">= 0.4"
