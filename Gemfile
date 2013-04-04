@@ -30,3 +30,4 @@ gem "better_errors", ">= 0.6.0", :group => :development
 gem "binding_of_caller", ">= 0.6.9", :group => :development
 gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
 gem "rails_autolink", ">=1.0.9"
+gem 'rails_admin'
